@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.logo {
+  height: "auto";
+  width: 180;
+}
+
+main {
+  height: 90vh;
+}
+
+footer {
+  height: 5vh;
+}
