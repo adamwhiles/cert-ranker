@@ -8,9 +8,18 @@
 }
 
 main {
-  height: 90vh;
+  min-height: 90vh;
+  min-width: 95vw;
+  width: auto;
+  height: auto;
 }
 
 footer {
   height: 5vh;
+}
+
+.certlist {
+  list-style: none;
+}
+.certbox {
 }

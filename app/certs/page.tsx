@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Cert } from "../types/models";
+import CertList from "../components/certList";
 
 export default function Page() {
   const [certs, setCerts] = useState([]);
@@ -15,15 +15,9 @@ export default function Page() {
     fetchCerts();
   }, []);
   return (
-    <div>
+    <div className="prose">
       <h1>Certs...</h1>
-      <ul>
-        {certs
-          ? certs.map((cert: Cert) => {
-              return <li key={cert.id}>{cert.id}</li>;
-            })
-          : null}
-      </ul>
+      {certs ? <CertList certs={certs} /> : null}
     </div>
   );
 }

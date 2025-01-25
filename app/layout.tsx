@@ -13,7 +13,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body style={{ backgroundColor: "#080808", color: "#EDE7D9" }}>
+      <body>
         <Navigation />
         <main className="py-10 px-10">{children}</main>
         <footer className="text-center">
