@@ -1,13 +1,13 @@
 import { CosmosClient } from "@azure/cosmos";
 
-export class DbClient {
+export default class DbClient {
   private client: CosmosClient;
   private endpoint: string;
   private key: string;
 
   constructor(
     endpoint: string = process.env.COSMOS_URI || "",
-    key: string = process.env.COSMOS_KEY || ""
+    key: string = process.env.COSMOS_KEY || "",
   ) {
     this.endpoint = endpoint;
     this.key = key;
@@ -18,5 +18,3 @@ export class DbClient {
     return this.client;
   }
 }
-
-module.exports = DbClient;
