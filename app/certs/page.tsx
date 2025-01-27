@@ -15,7 +15,7 @@ export default function Page() {
     fetchCerts();
   }, []);
   return (
-    <div className="prose">
+    <div className="">
       <h1>Certs...</h1>
       {certs ? <CertList certs={certs} /> : null}
     </div>

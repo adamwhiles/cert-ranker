@@ -15,7 +15,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Navigation />
-        <main className="py-10 px-10">{children}</main>
+        <main className="py-10 px-10 w-1">{children}</main>
         <footer className="text-center">
           Copyright &copy; 2025 CertRanker
         </footer>
