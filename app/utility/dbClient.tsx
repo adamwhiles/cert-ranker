@@ -1,20 +1,24 @@
-import { CosmosClient } from "@azure/cosmos";
+import { TokenCredential, DefaultAzureCredential } from "@azure/identity";
+import { CosmosClient, CosmosClientOptions } from "@azure/cosmos";
+
+const credential: TokenCredential =  new DefaultAzureCredential();
 
 export default class DbClient {
-  private client: CosmosClient;
   private endpoint: string;
-  private key: string;
+  private options: CosmosClientOptions = {
+    endpoint: process.env.COSMOS_URI || "",
+    aadCredentials: credential,
+  }
 
   constructor(
     endpoint: string = process.env.COSMOS_URI || "",
-    key: string = process.env.COSMOS_KEY || "",
   ) {
     this.endpoint = endpoint;
-    this.key = key;
-    this.client = new CosmosClient({ endpoint: this.endpoint, key: this.key });
   }
 
-  public getConnection(): CosmosClient {
-    return this.client;
+  public async getConnection(): Promise<CosmosClient> {
+    const client: CosmosClient = new CosmosClient(this.options);
+
+    return client;
   }
 }
