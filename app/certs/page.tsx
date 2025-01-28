@@ -7,7 +7,7 @@ export default function Page() {
   const [certs, setCerts] = useState([]);
   useEffect(() => {
     const fetchCerts = async () => {
-      const req = await fetch("http://127.0.0.1:3000/api/certs");
+      const req = await fetch("/api/certs");
       const data = await req.json();
       setCerts(data.resources);
     };
