@@ -2,17 +2,18 @@ import { Cert } from "../types/models";
 
 export default function CertBox({ cert }: { cert: Cert }) {
   return (
-    <li className="certbox flex from-gray-200 bg-gradient-to-b grad rounded-xl py-2 px-5 hover:bg-gray-400 my-4">
-      <h3 className="text-slate-100 font-bold bg-blue-400 px-3 py-1 rounded-md">
+    <div className="relative block p-6 border border-gray-100 rounded-lg max-w-x mx-auto mt-10">
+      <span className="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-white to-blue-600"></span>
+      <h3 className="bg-blue-600 inline-block text-white py-1 px-2 text-lg font-medium rounded-md">
         {cert.id}
       </h3>
-      <p>{cert.description.substring(0, 250) + "..."}</p>
+      <p className="mt-5">{cert.description.substring(0, 250) + "..."}</p>
 
-      <p>
+      <p className="text-right text-gray-400 mt-5">
         <a href={cert.url} target="_blank">
           {cert.url}
         </a>
       </p>
-    </li>
+    </div>
   );
 }

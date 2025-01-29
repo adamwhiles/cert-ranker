@@ -3,10 +3,10 @@ import CertBox from "./certBox";
 
 export default function CertList({ certs }: { certs: Cert[] }) {
   return (
-    <ul className="certlist">
+    <div className="">
       {certs.map((cert: Cert) => {
         return <CertBox key={cert.id} cert={cert} />;
       })}
-    </ul>
+    </div>
   );
 }
