@@ -16,7 +16,7 @@ export default function Page() {
   }, []);
   return (
     <div className="">
-      <h1>Certs are lame...</h1>
+      <h1 className="text-5xl">Certs</h1>
       {certs ? <CertList certs={certs} /> : null}
     </div>
   );
