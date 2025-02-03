@@ -2,10 +2,12 @@
 
 import Logo from "./logo";
 import { useState } from "react";
-
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 export default function Navigation() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <nav className="bg-white">
@@ -70,13 +72,12 @@ export default function Navigation() {
             </div>
             <div className="hidden sm:ml-6 sm:block">
               <div className="flex space-x-4">
-                <a
-                  href="#"
-                  className="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white"
-                  aria-current="page"
+                <Link
+                  href="/certs"
+                  className={`rounded-md px-4 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white [&.active]:text-indigo-600 ${pathname === "/certs" ? "bg-blue-600 text-white" : ""}`}
                 >
                   Certs
-                </a>
+                </Link>
                 <a
                   href="#"
                   className="rounded-md px-4 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
