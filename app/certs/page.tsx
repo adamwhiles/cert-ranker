@@ -14,7 +14,9 @@ export default async function Page() {
   //
   //   fetchCerts();
   // }, []);
-  const res = await fetch('http://127.0.0.1:3000/api/certs');
+  const res = await fetch('http://127.0.0.1:3000/api/certs', {
+    cache: "no-store"
+  });
   const certs = await res.json();
   return (
     <div className="">

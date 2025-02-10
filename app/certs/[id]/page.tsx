@@ -10,7 +10,9 @@ export default async function Page({
   params: Params
 }) {
   const { id } = await params;
-  const res = await fetch(`http://127.0.0.1:3000/api/certs/${id}`)
+  const res = await fetch(`http://127.0.0.1:3000/api/certs/${id}`, {
+    cache: "no-store"
+  })
   if (!res.ok) {
     return <div>Error Fetching Post</div>
   }
