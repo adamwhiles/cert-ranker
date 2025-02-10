@@ -1,19 +1,21 @@
-"use client";
+// "use client";
 
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import CertList from "../components/certList";
 
-export default function Page() {
-  const [certs, setCerts] = useState([]);
-  useEffect(() => {
-    const fetchCerts = async () => {
-      const req = await fetch("/api/certs");
-      const data = await req.json();
-      setCerts(data.resources);
-    };
-
-    fetchCerts();
-  }, []);
+export default async function Page() {
+  // const [certs, setCerts] = useState([]);
+  // useEffect(() => {
+  //   const fetchCerts = async () => {
+  //     const req = await fetch("/api/certs");
+  //     const data = await req.json();
+  //     setCerts(data.resources);
+  //   };
+  //
+  //   fetchCerts();
+  // }, []);
+  const res = await fetch('http://127.0.0.1:3000/api/certs');
+  const certs = await res.json();
   return (
     <div className="">
       <h1 className="text-5xl text-center">CERTS</h1>

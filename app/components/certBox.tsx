@@ -1,8 +1,9 @@
+import Link from "next/link";
 import { Cert } from "../types/models";
 
 export default function CertBox({ cert }: { cert: Cert }) {
   return (
-    <div className="relative block p-6 border border-gray-100 rounded-lg w-3/4 mx-auto mt-10 flex">
+    <div className="relative p-6 border border-gray-100 rounded-lg w-3/4 mx-auto mt-10 flex">
       <div className="flex flex-col items-center justify-center mr-4">
         <button className="text-gray-500 hover:text-blue-600">
           <svg
@@ -41,11 +42,13 @@ export default function CertBox({ cert }: { cert: Cert }) {
       <span className="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-white to-blue-600"></span>
       <div className="flex-1">
         <div className="align-middle">
-          <h3 className="bg-blue-600 inline-block text-white py-1 px-2 text-md font-medium rounded-md">
-            {cert.id}
-          </h3>
-          <img src="/images/10018-icon-service-Azure-A.svg" alt="Microsoft Azure" height="40" className="inline-block ml-2 h-6" />
-          <span className="ml-1 mt-2 font-medium justify-center align-middle">{cert.name}</span>
+          <Link href={`/certs/${cert.id}`}>
+            <h3 className="bg-blue-600 inline-block text-white py-1 px-2 text-md  lg:text-sm font-medium rounded-md">
+              {cert.id}
+            </h3>
+            <img src="/images/10018-icon-service-Azure-A.svg" alt="Microsoft Azure" height="40" className="inline-block ml-2 h-6" />
+            <span className="ml-1 mt-2 font-medium justify-center align-middle">{cert.name}</span>
+          </Link>
         </div>
         <p className="mt-5 ml-4">{cert.description.substring(0, 250) + "..."}</p>
 
