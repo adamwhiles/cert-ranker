@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Cert } from "../../types/models";
+import { getCertById } from "@/app/actions/certs";
 
 
 type Params = Promise<{ id: string }>;
@@ -10,13 +11,10 @@ export default async function Page({
   params: Params
 }) {
   const { id } = await params;
-  const res = await fetch(`http://127.0.0.1:3000/api/certs/${id}`, {
-    cache: "no-store"
-  })
-  if (!res.ok) {
+  const cert: Cert | null = await getCertById(id);
+  if (!cert) {
     return <div>Error Fetching Post</div>
   }
-  const cert: Cert = await res.json()
   return (
     <div className="relative p-6 border border-gray-100 rounded-lg w-7/8 mx-auto mt-10 flex">
       <div className="flex-1">
