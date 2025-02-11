@@ -1,4 +1,3 @@
-'use server'
 import { Cert } from "@/app/types/models";
 import CertList from "../components/certList";
 import { getAllCerts } from "@/app/actions/certs"
