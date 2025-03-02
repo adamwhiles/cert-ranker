@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Cert } from "../types/models";
+import Image from "next/image";
 
 export default function CertBox({ cert }: { cert: Cert }) {
   return (
@@ -42,15 +43,26 @@ export default function CertBox({ cert }: { cert: Cert }) {
       <span className="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-white to-blue-600"></span>
       <div className="flex-1">
         <div className="align-middle">
-          <Link href={`/certs/${cert.id}`}>
+          <Link href={`/certs/${cert.short_name}`}>
             <h3 className="bg-blue-600 inline-block text-white py-1 px-2 text-md  lg:text-sm font-medium rounded-md">
-              {cert.id}
+              {cert.short_name}
             </h3>
-            <img src="/images/10018-icon-service-Azure-A.svg" alt="Microsoft Azure" height="40" className="inline-block ml-2 h-6" />
-            <span className="ml-1 mt-2 font-medium justify-center align-middle">{cert.name}</span>
+            <Image
+              src="/images/10018-icon-service-Azure-A.svg"
+              alt="Microsoft Azure"
+              height="40"
+              className="inline-block ml-2 h-6"
+            />
+            <span className="ml-1 mt-2 font-medium justify-center align-middle">
+              {cert.name}
+            </span>
           </Link>
         </div>
-        <p className="mt-5 ml-4">{cert.description.substring(0, 250) + "..."}</p>
+        <p className="mt-5 ml-4">
+          {cert.description.indexOf(".") !== -1
+            ? cert.description.substring(0, cert.description.indexOf(".") + 1)
+            : cert.description.substring(0, 100) + "..."}
+        </p>
 
         <p className="text-right text-gray-400 mt-5">
           <a href={cert.url} target="_blank">

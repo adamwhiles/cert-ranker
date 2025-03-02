@@ -15,6 +15,7 @@ export interface LearningResource {
 export interface Cert {
   id: string;
   name: string;
+  short_name: string;
   description: string;
   url: string;
   learningResourceList: LearningResource;
