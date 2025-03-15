@@ -28,7 +28,7 @@ export default function CertBox({ cert }: { cert: Cert }) {
             </span>
           </Link>
         </div>
-        <p className="mt-5 ml-4">
+        <div className="mt-5 ml-4">
           <Markdown>
             {cert.description.indexOf(".") !== -1
               ? cert.description
@@ -42,7 +42,7 @@ export default function CertBox({ cert }: { cert: Cert }) {
                   .join("\n")
                   .substring(0, 100) + "..."}
           </Markdown>
-        </p>
+        </div>
 
         <p className="text-right text-gray-400 mt-5">
           <a href={cert.url} target="_blank">
