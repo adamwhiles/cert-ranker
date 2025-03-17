@@ -1,10 +1,11 @@
 import Link from "next/link";
-import { Cert } from "../types/models";
+import { CertificationAttributes } from "@/app/models/Certification";
+
 import Image from "next/image";
 import VoteButtons from "./voteButtons";
 import Markdown from "react-markdown";
 
-export default function CertBox({ cert }: { cert: Cert }) {
+export default function CertBox({ cert }: { cert: CertificationAttributes }) {
   return (
     <div className="relative p-6 border border-gray-100 rounded-lg w-3/4 mx-auto mt-10 flex">
       {/* Insert Vote Buttons */}
@@ -30,13 +31,13 @@ export default function CertBox({ cert }: { cert: Cert }) {
         </div>
         <div className="mt-5 ml-4">
           <Markdown>
-            {cert.description.indexOf(".") !== -1
-              ? cert.description
+            {(cert.description ?? "").indexOf(".") !== -1
+              ? (cert.description ?? "")
                   .split("\n")
                   .slice(1)
                   .join("\n")
-                  .substring(0, cert.description.indexOf(".") + 1)
-              : cert.description
+                  .substring(0, (cert.description ?? "").indexOf(".") + 1)
+              : (cert.description ?? "")
                   .split("\n")
                   .slice(1)
                   .join("\n")

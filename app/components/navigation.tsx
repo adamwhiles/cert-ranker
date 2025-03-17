@@ -4,6 +4,8 @@ import Logo from "./logo";
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { signIn } from "next-auth/react";
+
 export default function Navigation() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
@@ -74,7 +76,9 @@ export default function Navigation() {
               <div className="flex space-x-4">
                 <Link
                   href="/certs"
-                  className={`rounded-md px-4 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white [&.active]:text-indigo-600 ${pathname === "/certs" ? "bg-blue-600 text-white" : ""}`}
+                  className={`rounded-md px-4 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white [&.active]:text-indigo-600 ${
+                    pathname === "/certs" ? "bg-blue-600 text-white" : ""
+                  }`}
                 >
                   Certs
                 </Link>
@@ -149,6 +153,12 @@ export default function Navigation() {
                   >
                     Sign out
                   </a>
+                  <button
+                    onClick={() => signIn("google")}
+                    className="block w-full text-left px-4 py-2 text-sm text-gray-700"
+                  >
+                    Google
+                  </button>
                 </div>
               ) : null}
             </div>

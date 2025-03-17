@@ -1,25 +1,25 @@
-import sql from "mssql";
+import { Sequelize } from "sequelize";
+import * as tedious from "tedious";
 
-let pool: sql.ConnectionPool | null = null;
+let sequelize: Sequelize | undefined = undefined;
 
-export const getConnection = async (): Promise<sql.ConnectionPool> => {
-  const config: sql.config = {
-    server: process.env.AZURE_SQL_SERVER!,
-    options: {
-      database: process.env.AZURE_SQL_DATABASE!,
-      encrypt: true,
-      enableArithAbort: true,
-    },
-    authentication: {
-      type: "azure-active-directory-default",
-      options: {
-        clientId: undefined,
+export const getSequelizeConnection = (): Sequelize => {
+  if (!sequelize) {
+    sequelize = new Sequelize({
+      dialect: "mssql",
+      dialectModule: tedious,
+      host: "sqlserver-certranker.database.windows.net",
+      database: "sqldb-certranker",
+      dialectOptions: {
+        authentication: {
+          type: "azure-active-directory-default",
+        },
+        options: {
+          encrypt: true,
+          enableArithAbort: true,
+        },
       },
-    },
-  };
-
-  // Create and connect the new pool
-  pool = new sql.ConnectionPool(config);
-  await pool.connect();
-  return pool;
+    });
+  }
+  return sequelize;
 };

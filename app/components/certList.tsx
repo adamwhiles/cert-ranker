@@ -1,10 +1,14 @@
-import { Cert } from "../types/models";
+import { CertificationAttributes } from "@/app/models/Certification";
 import CertBox from "./certBox";
 
-export default function CertList({ certs }: { certs: Cert[] }) {
+export default function CertList({
+  certs,
+}: {
+  certs: CertificationAttributes[];
+}) {
   return (
     <div className="">
-      {certs.map((cert: Cert) => {
+      {certs.map((cert: CertificationAttributes) => {
         return <CertBox key={cert.id} cert={cert} />;
       })}
     </div>

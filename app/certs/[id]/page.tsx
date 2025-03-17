@@ -1,5 +1,5 @@
-import Link from "next/link";
-import { Cert } from "../../types/models";
+//import Link from "next/link";
+import { CertificationAttributes } from "@/app/models/Certification";
 import { getCertById } from "@/app/actions/certs";
 import Markdown from "react-markdown";
 import remarkBreaks from "remark-breaks";
@@ -10,8 +10,7 @@ type Params = Promise<{ id: string }>;
 
 export default async function Page({ params }: { params: Params }) {
   const { id } = await params;
-  const cert: Cert | null = await getCertById(id);
-  console.log(cert?.description);
+  const cert: CertificationAttributes | null = await getCertById(id);
   if (!cert) {
     return <div>Error Fetching Post</div>;
   }
@@ -20,25 +19,25 @@ export default async function Page({ params }: { params: Params }) {
       <div className="relative p-6 border border-gray-100 rounded-lg w-7/8 mx-auto mt-10 flex">
         <div className="flex-1">
           <div className="align-middle">
-            <Link href={`/certs/${cert.short_name}`}>
-              <h3 className="bg-blue-600 inline-block text-white py-1 px-2 text-md  lg:text-sm font-medium rounded-md">
-                {cert.short_name}
-              </h3>
-              <Image
-                src="/images/10018-icon-service-Azure-A.svg"
-                alt="Microsoft Azure"
-                height="40"
-                width={40}
-                className="inline-block ml-2 h-6"
-              />
-              <span className="ml-1 mt-2 font-medium justify-center align-middle">
-                {cert.name}
-              </span>
-            </Link>
+            <h3 className="bg-blue-600 inline-block text-white py-1 px-2 text-md  lg:text-sm font-medium rounded-md">
+              {cert.short_name}
+            </h3>
+            <Image
+              src="/images/10018-icon-service-Azure-A.svg"
+              alt="Microsoft Azure"
+              height="40"
+              width={40}
+              className="inline-block ml-2 h-6"
+            />
+            <span className="ml-1 mt-2 font-medium justify-center align-middle">
+              {cert.name}
+            </span>
           </div>
           <div className="mt-5 ml-4 single-cert-description">
             <Markdown remarkPlugins={[remarkBreaks]}>
-              {cert.description.split("\n").slice(1).join("\n")}
+              {cert.description
+                ? cert.description.split("\n").slice(1).join("\n")
+                : "No description available"}
             </Markdown>
           </div>
           <div className="mt-5 flex items-center">

@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@azure/cosmos": "^4.2.0",
+    "@auth/sequelize-adapter": "^2.8.0",
     "@azure/identity": "^4.6.0",
     "@radix-ui/react-dialog": "^1.1.6",
     "@tailwindcss/postcss": "^4.0.6",
@@ -18,12 +18,15 @@
     "lucide-react": "^0.475.0",
     "mssql": "^11.0.1",
     "next": "15.1.7",
+    "next-auth": "^5.0.0-beta.25",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-markdown": "^10.0.1",
     "remark-breaks": "^4.0.0",
+    "sequelize": "^6.37.6",
     "tailwind-merge": "^3.0.1",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "tedious": "^18.6.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -32,6 +35,7 @@
     "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/tedious": "^4.0.14",
     "eslint": "^9",
     "eslint-config-next": "15.1.7",
     "postcss": "^8",
